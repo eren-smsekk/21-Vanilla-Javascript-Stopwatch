@@ -1,0 +1,20 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.start:hover {
+    background-color: #fff;
+    color: #000000;
+    border-color: #fff;
+    transition: background-color .7s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .button-group {
+        flex-direction: column !important;
+    }
+
+    .start:nth-child(2) {
+        margin: 20px 0 !important;
+    }
+}

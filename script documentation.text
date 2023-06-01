@@ -1,0 +1,53 @@
+Adım 1 : 
+    - 'window.onload() = function() {...}' : Kodun çalışmasını sayfa yüklendiğinde başlatmak için 'window.onload' olayını kullanıyoruz. Tüm HTML içeriği yüklendiğinde kod çalışacak.
+
+Adım 2 :
+    - 'var minutes = 00;
+       var seconds = 00
+       var tens = 00' : Dakika, saniye, salise olarak 3 deişken tanımlıyoruz ve Başlangıçta hepsi 0 değeri ile başlatılıyor.
+
+Adım 3 : 
+    - 'var appendMinutes = document.getElementById("minutes")
+       var appendSeconds = document.getElementById("seconds")
+       var appendTens = document.getElementById("tens")' : HTML içindeki "minutes, seconds, tens" id'li span etiketlerini seçmek için 'getElementById' yöntemini kullanırız.
+
+Adım 4 :'let buttonStart = document.getElementById("buttonStart");
+         let buttonStop = document.getElementById("buttonStop");
+         let buttonReset = document.getElementById("buttonReset");' : HTML içerisindeki butonlara ulaşmak için idlerni 'getElementById' ile seçeriz.
+
+Adım 5 : 'let Interval' : Zamanlayıcıyı tutmak için boş bir 'Interval' değişkeni tanımlıyoruz.
+
+Adım 6 : 'buttonStart.onclick = function() {...}' : "buttonStart" butonuna tıklandığında çalışacak olan fonksiyonu tanımlıyoruz. Bu fonksiyon 'setInterval' fonksiyonunu her 10 milisaniyede bir çağırarak kronometreyi başlatır.
+
+Adım 7 : 'buttonStop.onclick = function() {...}' : "buttonStop" butonuna tıklandığında çalışacak olan fonksiyonu tanımlıyoruz. Bu fonksiyon 'clearInterval' fonksiyonunu çağırarak kronometreyi durdurur.
+
+Adım 8 : 'buttonReset.onclick = function() {...}' : "buttonReset" butonuna tıklandığında çalışacak olan fonksiyonu tanımlıyoruz. Bu fonksiyon "minutes, seconds, tens" değişkenlerine '00' atayıp innerHTML metodu ile ekrana zamanlayıcıyı 00 : 00 : 00 olarak bastırır.
+
+Adım 9 : 'function startTimer() {...}' : 'startTimer' adında bir fonksiyon tanımlıyoruz. Bu fonksiyon kronometre işlevini gerçekleştiren bir algoritmayı için tanımlıyor. Her çağırıldığında 'tens' değişkenini artırıyor ve buna bağlı olarak html öğelerinin içeriğini güncelliyor.
+
+Adım 10 : 'if(tens <= 9) {...}' : Eğer 'tens' değişkeni 9'a eşit veya küçükse 'appendTens' öğesinin içerine "0" + 'tens' olarak güncelliyor. Bu tek haneli sayıları iki haneli formatta göstermek için kullanılır. Örneğin 'tens' değeri 5 ise 'appendTens' öğesinin içeriği '05' olur.
+
+Adım 11 : 'if(tens > 9) {...}' : Eğer 'tens' değişkeni 9'dan büyük olması durumunda 'appendTens' öğesinin içeriğini 'tens' olarak günceller. Örneğin 'tens' değeri 11 ise 'appendTens' öğesini 11 olarak ekrana bastırır.
+
+Adım 12 : if (tens > 99) {
+                seconds++;
+                
+                if (seconds <= 9) {
+                    appendSeconds.innerHTML = "0" + seconds;
+                } else {
+                    appendSeconds.innerHTML = seconds;
+                }
+                
+                tens = 0;
+                appendTens.innerHTML = "0" + tens;
+                
+                if (seconds > 59) {
+                    minutes++;
+                    appendMinutes.innerHTML = minutes.toString();
+                    seconds = 0;
+                    appendSeconds.innerHTML = "0" + seconds;
+                }
+            } : Bu blok 'tens' değerini kontrol eder. Eğer 'tens' 99'dan büyük ise saniye(seconds) ve Dakika(minutes) değerlerini günceller. ilk olarak 'seconds' değerini +1 artırır. Daha sonra 'seconds' değerini kontrol eder. Eğer 'seconds' değeri 9'dan küçük veya eşitse 'appendSeconds' öğesinin içeriğini "0" + 'seconds' olarak günceller. Eğer 'seconds' 9'dan büyükse 'appendSeconds' öğesinin içeriğini 'seconds' olarak günceller.
+            Ardından 'tens' değerini 0'lar ve 'appendTens' öğesinin içeriğini "00" olarak günceller. Son olarak 'seconds' değerini kontrol eder. Eğer 'seconds' 59'dan büyükse 'minutes' değerini +1 artırır ve 'seconds' değerini 0'lar. Bu şekilde dakika ve saniye sayacı doğru bir şekilde çalışır.
+
+       
